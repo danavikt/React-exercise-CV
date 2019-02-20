@@ -105,3 +105,13 @@ main {
     }
   }
 }
+
+.Footer {
+  display: flex;
+  justify-content: center;
+  background: #ff4500;
+
+  svg {
+    padding: 10px;
+  }
+}
