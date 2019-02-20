@@ -1,0 +1,42 @@
+.App {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.Header {
+  margin: 35px 0;
+  position: relative;
+
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  &--contact {
+    font-weight: 700;
+
+    a {
+      font-weight: 500;
+      color: #989595;
+      text-decoration: none;
+    }
+  }
+
+  &--profile-picture {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    width: 250px;
+    transition: transform 0.3s ease-in;
+    transform: rotate(-4deg);
+
+    &:hover {
+      transform: rotate(0deg);
+    }
+  }
+
+  &--summary {
+    width: 40em;
+    margin-top: 20px;
+  }
+}
