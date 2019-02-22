@@ -119,8 +119,20 @@ function App() {
         </main>
       </div>
       <footer className="Footer">
-        <FaGithubSquare />
-        <FaLinkedin />
+        <a
+          href="https://github.com/danavikt"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaGithubSquare />
+        </a>
+        <a
+          href="https://lt.linkedin.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaLinkedin />
+        </a>
       </footer>
     </React.Fragment>
   );
