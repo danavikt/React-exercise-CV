@@ -1,0 +1,64 @@
+main {
+  .Section {
+    display: flex;
+    min-height: 100px;
+    padding: 10px 0;
+
+    &--left {
+      flex: 1;
+      padding: 0 20px;
+      position: relative;
+
+      h3 {
+        text-align: right;
+        font-style: italic;
+      }
+
+      &:after {
+        content: "";
+        height: 100px;
+        width: 1px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: #989595;
+      }
+    }
+
+    &--right {
+      flex: 4;
+      padding: 0 20px;
+
+      &-job-title {
+        display: flex;
+        justify-content: space-between;
+
+        span {
+          font-size: 14px;
+          color: #ff4500;
+          opacity: 0.75;
+          font-style: italic;
+          padding-left: 25px;
+          line-height: 22px;
+        }
+      }
+
+      p span {
+        font-weight: 700;
+      }
+
+      div {
+        padding-bottom: 15px;
+
+        &:nth-last-child(1) {
+          padding-bottom: 0;
+        }
+      }
+
+      ul {
+        list-style: disc inside;
+        padding-top: 10px;
+      }
+    }
+  }
+}
