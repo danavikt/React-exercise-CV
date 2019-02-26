@@ -1,14 +1,14 @@
 import React from "react";
 import data from "./data";
-import "./index.scss";
 
 import IconLink from "./IconLink";
+import "./index.scss";
 
 function Footer() {
   return (
     <footer className="Footer">
-      {data.map(({ href, icon }) => (
-        <IconLink href={href} target="_blank" icon={icon} />
+      {data.map(({ href, icon }, index) => (
+        <IconLink key={index} href={href} icon={icon} />
       ))}
     </footer>
   );

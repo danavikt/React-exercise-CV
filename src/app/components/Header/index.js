@@ -1,35 +1,52 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./index.scss";
+import data from "./data";
 
-function Header() {
+function Header(props) {
+  const { language, onLanguage } = props;
+  const { name, contacts, summary, picture } = data[language];
   return (
     <header className="Header">
-      <h1>Doggo</h1>
+      <h1>{name}</h1>
       <hr />
-      <p className="Header--contact">Phone: +3705555555</p>
+      <p className="Header--contact">{`${contacts.phone.label} ${
+        contacts.phone.value
+      }`}</p>
       <p className="Header--contact">
-        Email:{" "}
+        {`${contacts.email.label}`}{" "}
         <a
-          href="mailto:email@doggo.com"
+          href={`mailto:${contacts.email.value}`}
           target="_blank"
           rel="noopener noreferrer"
         >
-          email@doggo.com
+          {`${contacts.email.value}`}
         </a>
       </p>
-      <p className="Header--summary">
-        Ice cream fruitcake dessert cheesecake. Chocolate sweet roll donut
-        cupcake. Sugar plum pastry ice cream. Pudding carrot cake lemon drops
-        jelly. Marshmallow brownie jelly-o cake cheesecake. Danish macaroon
-        soufflé.
-      </p>
+      <p className="Header--summary">{summary}</p>
       <img
         className="Header--profile-picture"
-        alt="This is an office dog"
-        src="https://www.hashtaghr.com.au/images/easyblog_articles/150/b2ap3_large_Office-Dog.png"
+        alt={picture.alt}
+        src={picture.src}
       />
+      <select
+        onChange={e => onLanguage(e.target.value)}
+        className="Header--language-select"
+      >
+        <option value="en">English</option>
+        <option value="it">Italian</option>
+      </select>
     </header>
   );
 }
+
+Header.propTypes = {
+  language: PropTypes.oneOf(["en", "it"]),
+  onLanguage: PropTypes.func.isRequired,
+};
+
+Header.defaultProps = {
+  language: "en",
+};
 
 export default Header;

@@ -1,94 +1,94 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./index.scss";
+import data from "./data";
 
-function Main() {
+function Main(props) {
+  const { language } = props;
+  const skills = data.skills[language];
+  const education = data.education[language];
+  const experience = data.experience[language];
+  const hobbies = data.hobbies[language];
+  const references = data.references[language];
   return (
     <main>
       <section className="Section">
         <div className="Section--left">
-          <h3>Education</h3>
+          <h3>{education.label}</h3>
         </div>
         <div className="Section--right">
-          <h3>Doggos university</h3>
+          <h3>{education.school}</h3>
           <p>
-            <span>Major: </span>Barking
+            <span>{`${education.major.label}: `}</span>
+            {education.major.value}
           </p>
           <p>
-            <span>Minor: </span>Chasing Cats
+            <span>{`${education.minor.label}: `}</span>
+            {education.minor.value}
           </p>
         </div>
       </section>
       <section className="Section">
         <div className="Section--left">
-          <h3>Skills</h3>
+          <h3>{skills.label}</h3>
         </div>
         <div className="Section--right">
-          <div>
-            <h3>Barking Skills</h3>
-            <p>160kHz sound tone</p>
-            <p>Non-stop barking for 24 hours</p>
-          </div>
-          <div>
-            <h3>Cats Chasing Skills</h3>
-            <p>Can chase more than one at the time</p>
-            <p>Barking included</p>
-          </div>
-        </div>
-      </section>
-      <section className="Section">
-        <div className="Section--left">
-          <h3>Experience</h3>
-        </div>
-        <div className="Section--right">
-          <div>
-            <div className="Section--right-job-title">
-              <h3>Good at:</h3>
-              <span>Very good Doggo, 2018-present</span>
+          {skills.list.map(({ title, description }, index) => (
+            <div key={index}>
+              <h3>{title}</h3>
+              <p>{description}</p>
             </div>
-            <ul>
-              <li>Sleeping</li>
-              <li>Eating</li>
-              <li>Playing</li>
-              <li>Sniffing things</li>
-              <li>Walking Outdoors</li>
-            </ul>
-          </div>
-          <div>
-            <div className="Section--right-job-title">
-              <h3>Good at:</h3>
-              <span>Very good Doggo, 2018-present</span>
-            </div>
-            <ul>
-              <li>Sleeping</li>
-              <li>Eating</li>
-              <li>Playing</li>
-              <li>Sniffing things</li>
-              <li>Walking Outdoors</li>
-            </ul>
-          </div>
+          ))}
         </div>
       </section>
       <section className="Section">
         <div className="Section--left">
-          <h3>Hobbies</h3>
+          <h3>{experience.label}</h3>
         </div>
         <div className="Section--right">
-          <p>
-            Ice cream fruitcake dessert cheesecake. Chocolate sweet roll donut
-            cupcake. Sugar plum pastry ice cream.
-          </p>
+          {experience.list.map(
+            ({ title, subtitle, responsibilities }, index) => (
+              <div key={index}>
+                <div className="Section--right-job-title">
+                  <h3>{title}</h3>
+                  <span>{subtitle}</span>
+                </div>
+                <ul>
+                  {responsibilities.map((value, i) => (
+                    <li key={i}>{value}</li>
+                  ))}
+                </ul>
+              </div>
+            )
+          )}
         </div>
       </section>
       <section className="Section">
         <div className="Section--left">
-          <h3>References</h3>
+          <h3>{hobbies.label}</h3>
         </div>
         <div className="Section--right">
-          <p>Available on request.</p>
+          <p>{hobbies.summary}</p>
+        </div>
+      </section>
+      <section className="Section">
+        <div className="Section--left">
+          <h3>{references.label}</h3>
+        </div>
+        <div className="Section--right">
+          <p>{references.summary}</p>
         </div>
       </section>
     </main>
   );
 }
+
+Main.propTypes = {
+  language: PropTypes.oneOf(["en", "it"]),
+};
+
+Main.defaultProps = {
+  language: "en",
+};
 
 export default Main;
