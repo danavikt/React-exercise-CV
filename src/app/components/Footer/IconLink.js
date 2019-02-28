@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 function IconLink(props) {
   const { href, target, icon: Icon } = props; // const icon = Icon; pasiima ir pervadina su didziaja raide
 
+  throw Error("Icon Link failed");
   return (
     <a href={href} target={target} rel="noopener noreferrer">
       <Icon />
